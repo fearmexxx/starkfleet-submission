@@ -8,7 +8,7 @@ A fully on-chain implementation of the classic Battleship game using Merkle-tree
 
 ## 🎮 Overview
 
-StarkFleet Clash is a 1v1 turn-based strategy game where players:
+StarkFleet Clash is a pvp turn-based strategy game where players:
 - Place their fleet secretly on a 10×10 grid
 - Commit their board using a Merkle root (Pedersen hash)
 - Take turns attacking opponent coordinates
@@ -37,7 +37,7 @@ starfleet/
 ## ✨ Features
 
 ### Smart Contract (Cairo)
-- ✅ Game creation with ETH staking
+- ✅ Game creation with STRK staking
 - ✅ Join game and match stake
 - ✅ Merkle root commitment
 - ✅ Attack submission
@@ -110,7 +110,7 @@ npm run dev
 - **No adjacent placement** (including diagonally)
 
 ### Game Flow
-1. **Create**: Player 1 stakes ETH, gets game ID
+1. **Create**: Player 1 stakes STRK, gets game ID
 2. **Join**: Player 2 matches stake
 3. **Commit**: Both submit Merkle roots of their boards
 4. **Attack**: Players alternate attacking coordinates
