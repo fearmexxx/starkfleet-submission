@@ -13,7 +13,7 @@ StarkFleet Clash is a 1v1 turn-based strategy game where players:
 - Commit their board using a Merkle root (Pedersen hash)
 - Take turns attacking opponent coordinates
 - Reveal hit/miss with cryptographic proofs
-- First to 17 hits wins the entire pot
+- First to 7 hits wins the entire pot (quick game version)
 
 ## 🏗️ Architecture
 
@@ -150,7 +150,7 @@ When attacked at (x, y):
 **Network**: Starknet Sepolia  /  Starknet Mainnet
 **Language**: Cairo 2.15.0  
 **Gas Target**: <300k L2 gas per tx  
-**Minimum Stake**: 0.001 ETH  
+**Minimum Stake**: 1 $STRK  
 **Timeout**: 24 hours  
 
 ### Events
