@@ -1,0 +1,113 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build:deps": {
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "outputs": [
+        "dist/**",
+        "**/pkg-controller/**",
+        "**/pkg-session/**"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build:deps",
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**",
+        "**/pkg-controller/**",
+        "**/pkg-session/**",
+        "build/**",
+        ".svelte-kit/**"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**",
+        "**/pkg-controller/**",
+        "**/pkg-session/**"
+      ]
+    },
+    "dev:live": {
+      "persistent": true,
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**",
+        "**/pkg-controller/**",
+        "**/pkg-session/**"
+      ]
+    },
+    "storybook": {
+      "persistent": true,
+      "dependsOn": [
+        "^build:deps"
+      ]
+    },
+    "test:storybook": {
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "env": [
+        "PLAYWRIGHT_BROWSERS_PATH",
+        "DISPLAY"
+      ]
+    },
+    "test:storybook:update": {
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "env": [
+        "PLAYWRIGHT_BROWSERS_PATH",
+        "DISPLAY"
+      ]
+    },
+    "lint": {},
+    "lint:fix": {},
+    "format": {},
+    "format:check": {},
+    "e2e": {
+      "dependsOn": [
+        "^build:deps"
+      ]
+    },
+    "e2e:ui": {
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "persistent": true
+    },
+    "preview": {
+      "persistent": true,
+      "dependsOn": [
+        "^build:deps"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**",
+        "**/pkg-controller/**",
+        "**/pkg-session/**"
+      ]
+    }
+  },
+  "globalDependencies": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "packages/account_sdk/src",
+    "packages/account-wasm/src"
+  ]
+}

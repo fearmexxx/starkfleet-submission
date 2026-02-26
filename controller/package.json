@@ -1,0 +1,70 @@
+{
+  "name": "controller",
+  "packageManager": "pnpm@10.28.2",
+  "private": true,
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build:deps": "turbo build:deps",
+    "build": "turbo build:deps build && pnpm graphql:gen",
+    "dev": "turbo build:deps dev",
+    "dev:live": "turbo build:deps dev:live",
+    "storybook": "pnpm turbo build:deps storybook",
+    "e2e": "turbo build:deps dev e2e",
+    "e2e:ui": "turbo build:deps dev e2e:ui",
+    "lint": "turbo lint:fix format",
+    "lint:check": "turbo lint format:check",
+    "format": "turbo format lint:fix",
+    "clean": "git clean -fdX && pnpm store prune",
+    "ci": "pnpm clean && pnpm i",
+    "release": "pnpm build && pnpm -r --filter=@cartridge/controller --filter=@cartridge/connector publish --tag latest --no-git-checks --access public",
+    "release:prerelease": "pnpm build && pnpm -r --filter=@cartridge/controller --filter=@cartridge/connector publish --tag prerelease --no-git-checks --access public",
+    "keychain": "pnpm --filter @cartridge/keychain",
+    "controller": "pnpm --filter @cartridge/controller",
+    "connector": "pnpm --filter @cartridge/connector",
+    "book": "pnpm --filter @cartridge/documentation",
+    "example:next": "pnpm --filter @cartridge/controller-example-next",
+    "example:svelte": "pnpm --filter @cartridge/controller-example-svelte",
+    "graphql:gen": "graphql-codegen --config packages/keychain/src/utils/api/codegen.yaml",
+    "test": "pnpm keychain test",
+    "test:ci": "pnpm keychain test:ci",
+    "test:storybook": "pnpm turbo build:deps test:storybook",
+    "test:storybook:update": "pnpm turbo build:deps test:storybook:update",
+    "check:regression": "pnpm ./scripts/check_regression.sh",
+    "preview": "turbo build:deps preview",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@cartridge/presets": "github:cartridge-gg/presets#bac9813",
+    "@cartridge/ui": "github:cartridge-gg/ui#e5405d6",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.8",
+    "@graphql-codegen/typescript-operations": "^2.3.5",
+    "@graphql-codegen/typescript-react-query": "^3.5.9",
+    "tailwindcss": "catalog:"
+  },
+  "devDependencies": {
+    "env-cmd": "^11.0.0",
+    "husky": "^9.1.7",
+    "turbo": "^2.5.4",
+    "vercel": "^37.14.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@radix-ui/react-accordion": "1.2.1",
+      "typescript": "catalog:",
+      "@noble/curves": "catalog:",
+      "@noble/hashes": "catalog:",
+      "@dojoengine/core": "catalog:",
+      "@dojoengine/torii-wasm": "catalog:",
+      "@dojoengine/sdk": "catalog:",
+      "@starknet-react/core": "catalog:",
+      "@starknet-react/chains": "catalog:",
+      "@starknet-io/types-js": "catalog:"
+    }
+  },
+  "files": [
+    "*.js",
+    "*.wasm",
+    "*.d.ts"
+  ]
+}

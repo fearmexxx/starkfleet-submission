@@ -1,0 +1,44 @@
+@import "@cartridge/ui/themes/default.css";
+@import "@cartridge/ui/themes/dark.css";
+@import "@cartridge/ui/themes/fonts.css";
+@import "@cartridge/ui/themes/scrollbar.css";
+@import "./fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-background text-foreground ring-foreground touch-manipulation;
+  }
+
+  * {
+    @apply focus:outline-none focus:ring-0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

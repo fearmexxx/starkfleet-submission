@@ -1,0 +1,56 @@
+{
+  "name": "@cartridge/connector",
+  "version": "0.12.2",
+  "description": "Cartridge Controller Connector",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build:deps": "tsup --dts-resolve",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\""
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./controller": "./dist/controller.js",
+    "./session": "./dist/session.js"
+  },
+  "typesVersions": {
+    "*": {
+      "controller": [
+        "./dist/controller.d.ts"
+      ],
+      "session": [
+        "./dist/session.d.ts"
+      ]
+    }
+  },
+  "tsup": {
+    "entry": [
+      "src/controller.ts",
+      "src/session.ts",
+      "src/index.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "dts": "resolve"
+  },
+  "peerDependencies": {
+    "@starknet-react/core": "^5.0.1"
+  },
+  "dependencies": {
+    "@cartridge/controller": "workspace:*",
+    "@starknet-io/get-starknet-wallet-standard": "5.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@cartridge/tsconfig": "workspace:*",
+    "prettier": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@cartridge/tsconfig",
+  "private": true,
+  "version": "0.12.2",
+  "files": [
+    "base.json",
+    "react.json"
+  ],
+  "devDependencies": {
+    "typescript": "catalog:"
+  }
+}
